@@ -59,4 +59,4 @@ ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
 ENV HUBOT_SLACK_TOKEN=ffff-1234-5678-91011-00e4dd HUBOT_STANDUP_PREPEND=@here
 
 # And go
-CMD ["/bin/sh", "-c", "aws s3 cp --region eu-west-1 s3://pgarbe-secrets/env.sh .; . ./env.sh; bin/hubot --adapter slack"]
+CMD ["/bin/sh", "-c", "bin/hubot --adapter slack"]
