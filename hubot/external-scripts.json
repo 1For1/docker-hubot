@@ -1,7 +1,8 @@
 [
+  "hubot-slack",
+  "hubot-standup-alarm",
   "hubot-diagnostics",
   "hubot-help",
-  "hubot-heroku-keepalive",
   "hubot-google-images",
   "hubot-google-translate",
   "hubot-pugme",
@@ -9,12 +10,16 @@
   "hubot-redis-brain",
   "hubot-rules",
   "hubot-shipit",
-  "hubot-youtube",
-  "hubot-standup-alarm",
   "hubot-auth",
   "hubot-github",
   "hubot-alias",
-  "hubot-gocd",
-  "hubot-youtube",
-  "hubot-s3-brain"
+  "hubot-reminder",
+  "hubot-strawpoll",
+  "hubot-leaderboard",
+  "hubot-docker",
+  "hubot-at",
+  "hubot-weather",
+  "hubot-jenkins",
+  "hubot-trello",
+
 ]
