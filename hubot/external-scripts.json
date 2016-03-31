@@ -1,5 +1,4 @@
 [
-  "hubot-slack",
   "hubot-standup-alarm",
   "hubot-diagnostics",
   "hubot-help",
