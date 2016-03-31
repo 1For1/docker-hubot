@@ -23,7 +23,7 @@ USER	hubot
 WORKDIR /hubot
 
 # Install hubot
-RUN yo hubot --owner="Tatsu <inside@autoscout24.com>" --name="Tatsu" --description="Roll, roll, rollercoaster" --defaults
+RUN yo hubot --owner="1For1 <ops@1for.one>" --name="1For!" --description="Roll, roll, rollercoaster" --defaults
 
 # Some adapters / scripts
 RUN npm install hubot-slack --save && npm install
@@ -35,7 +35,19 @@ RUN npm install hubot-github --save && npm install
 RUN npm install hubot-alias --save && npm install
 RUN npm install hubot-gocd --save && npm install
 RUN npm install hubot-youtube --save && npm install
-RUN npm install hubot-s3-brain --save && npm install
+RUN npm install hubot-s3-brain --save && npm install \
+    && npm install hubot-reminder --save \
+    && npm install hubot-strawpoll --save \
+    && npm install hubot-leaderboard --save \
+    && npm install hubot-docker --save \
+    && npm install hubot-at --save \
+    && npm install hubot-spot --save \
+    && npm install hubot-weather --save \
+    && npm install hubot-jenkins --save \
+    && npm install hubot-trello --save \
+    && npm install hubot-zabbix --save \
+    && npm install hubot-weather --save \
+    && npm install
 
 # Activate some built-in scripts
 ADD hubot/hubot-scripts.json /hubot/
