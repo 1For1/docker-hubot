@@ -53,6 +53,8 @@ RUN npm install hubot-s3-brain --save && npm install \
 ADD hubot/hubot-scripts.json /hubot/
 ADD hubot/external-scripts.json /hubot/
 
+RUN chown hubot:hubot /hubot/*json
+
 RUN npm install cheerio --save && npm install
 ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
 
