@@ -44,9 +44,11 @@ RUN npm install hubot-slack --save \
     && npm install hubot-spot --save \
     && npm install hubot-weather --save \
     && npm install hubot-jenkins --save \
-    && npm install hubot-trello --save \
+    && npm install hubot-trello-organization --save \
     && npm install hubot-zabbix --save \
     && npm install hubot-weather --save \
+    && npm install hubot-tell --save \
+    && npm install hubot-seen --save \
     && npm install
 
 RUN npm install cheerio --save && npm install
