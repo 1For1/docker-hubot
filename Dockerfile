@@ -16,14 +16,7 @@ RUN npm install -g coffee-script
 RUN npm install -g yo generator-hubot
 
 # Create hubot user
-RUN	useradd -d /hubot -m -s /bin/bash -U hubot
-
-# Activate some built-in scripts
-ADD hubot/hubot-scripts.json /hubot/
-ADD hubot/external-scripts.json /hubot/
-
-# Must be before USER command
-RUN chown hubot:hubot /hubot/*json
+RUN	useradd -d /hubot -m -s /bin/bash -U hubot -p hubot
 
 # Log in as hubot user and change directory
 USER	hubot
@@ -33,16 +26,16 @@ WORKDIR /hubot
 RUN yo hubot --owner="1For1 <ops@1for.one>" --name="1For!" --description="Roll, roll, rollercoaster" --defaults
 
 # Some adapters / scripts
-RUN npm install hubot-slack --save && npm install
-RUN npm install hubot-standup-alarm --save && npm install
-RUN npm install hubot-auth --save && npm install
-RUN npm install hubot-google-translate --save && npm install
-RUN npm install hubot-auth --save && npm install
-RUN npm install hubot-github --save && npm install
-RUN npm install hubot-alias --save && npm install
-RUN npm install hubot-gocd --save && npm install
-RUN npm install hubot-youtube --save && npm install
-RUN npm install hubot-s3-brain --save && npm install \
+RUN npm install hubot-slack --save \
+    && npm install hubot-standup-alarm --save \
+    && npm install hubot-auth --save \
+    && npm install hubot-google-translate --save \
+    && npm install hubot-auth --save \
+    && npm install hubot-github --save \
+    && npm install hubot-alias --save \
+    && npm install hubot-gocd --save \
+    && npm install hubot-youtube --save \
+    && npm install hubot-s3-brain --save \
     && npm install hubot-reminder --save \
     && npm install hubot-strawpoll --save \
     && npm install hubot-leaderboard --save \
@@ -58,6 +51,15 @@ RUN npm install hubot-s3-brain --save && npm install \
 
 RUN npm install cheerio --save && npm install
 ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
+
+# Activate some built-in scripts
+COPY hubot/hubot-scripts.json /hubot/
+COPY hubot/external-scripts.json /hubot/
+
+# Must be before USER command
+USER root
+RUN chown hubot:hubot /hubot/*json
+USER hubot
 
 ENV HUBOT_SLACK_TOKEN=ffff-1234-5678-91011-00e4dd HUBOT_STANDUP_PREPEND=@here
 
