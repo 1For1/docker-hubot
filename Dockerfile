@@ -18,6 +18,13 @@ RUN npm install -g yo generator-hubot
 # Create hubot user
 RUN	useradd -d /hubot -m -s /bin/bash -U hubot
 
+# Activate some built-in scripts
+ADD hubot/hubot-scripts.json /hubot/
+ADD hubot/external-scripts.json /hubot/
+
+# Must be before USER command
+RUN chown hubot:hubot /hubot/*json
+
 # Log in as hubot user and change directory
 USER	hubot
 WORKDIR /hubot
@@ -48,12 +55,6 @@ RUN npm install hubot-s3-brain --save && npm install \
     && npm install hubot-zabbix --save \
     && npm install hubot-weather --save \
     && npm install
-
-# Activate some built-in scripts
-ADD hubot/hubot-scripts.json /hubot/
-ADD hubot/external-scripts.json /hubot/
-
-RUN chown hubot:hubot /hubot/*json
 
 RUN npm install cheerio --save && npm install
 ADD hubot/scripts/hubot-lunch.coffee /hubot/scripts/
