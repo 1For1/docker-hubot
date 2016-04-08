@@ -49,6 +49,7 @@ RUN npm install hubot-slack --save \
     && npm install hubot-weather --save \
     && npm install hubot-tell --save \
     && npm install hubot-seen --save \
+    && npm install hubot-elasticsearch --save \
     && npm install
 
 RUN npm install cheerio --save && npm install
